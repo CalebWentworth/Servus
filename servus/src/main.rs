@@ -18,12 +18,12 @@ fn handle_connection(mut stream: TcpStream) {
     //matching code for later expansion for resource locating, just put html files in the project directory.
     
     //Like haskell guards, this returns different responses based on the resource
-    // logic for finding resources will come at some point, as of now this is hard coded, as I wanted to understand
+    //logic for finding resources will come at some point, as of now this is hard coded, as I wanted to understand
     //rust functions, basic networking, and threads a bit.
     let response = match request{
         "GET / HTTP/1.1" => serve("site.html"),
+        "GET /servus.zip HTTP/1.1" => download("servus.zip"),
         "GET /secret.zip HTTP/1.1" => download("secret.zip"),
-        "GET /servus.zip" => download("servus.zip"),
         _ => serve("404.html"),//in all other cases serve 404.html
     };
     //sends the response

@@ -1,6 +1,7 @@
 # cos360-project
 Project is a BASIC rust webserver, atm it just serves a home page and a 404.
 
+Crashes if you connect with HTTPS, so just use http for now
 To run:
 
 clone repo:

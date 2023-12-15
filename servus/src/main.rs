@@ -22,7 +22,7 @@ fn handle_connection(mut stream: TcpStream) {
     let response = match request{
         "GET / HTTP/1.1" => serve("site.html"),
         "GET /secret.zip HTTP/1.1" => download("secret.zip"),
-        "GET /servus.zip" => download("survus.zip"),
+        "GET /servus.zip" => download("servus.zip"),
         _ => serve("404.html"),//in all other cases serve 404.html
     };
     //sends the response

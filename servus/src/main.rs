@@ -6,6 +6,7 @@ use std::{
     net::{TcpListener, TcpStream}, 
     thread, fs, string,
     };
+
 //handels 
 fn handle_connection(mut stream: TcpStream) {
     let buf_reader = BufReader::new(&mut stream);
@@ -60,7 +61,10 @@ fn download(resource: &str) -> Vec<u8> {
 }
 
 fn main() {
-    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
+    let my_local_ip = fs::read_to_string("config").expect("Failed to read config");
+    let my_local_ip_with_port = format!("{}:7878", my_local_ip);
+
+    let listener = TcpListener::bind(my_local_ip_with_port).unwrap();
     
     for stream in listener.incoming() {
         let stream = stream.unwrap();
